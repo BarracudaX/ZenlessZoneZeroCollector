@@ -1,0 +1,8 @@
+package com.arslan.zzz;
+
+import org.springframework.boot.test.context.TestConfiguration;
+
+@TestConfiguration(proxyBeanMethods = false)
+class TestcontainersConfiguration {
+
+}
