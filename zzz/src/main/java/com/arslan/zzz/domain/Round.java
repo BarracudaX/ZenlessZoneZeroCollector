@@ -1,5 +1,5 @@
 package com.arslan.zzz.domain;
 
-public enum Phase {
+public enum Round {
     FIRST,SECOND
 }

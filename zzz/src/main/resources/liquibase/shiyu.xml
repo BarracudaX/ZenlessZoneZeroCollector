@@ -10,9 +10,16 @@
         http://www.liquibase.org/xml/ns/pro
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include file="/liquibase/enemy.xml" />
-    <include file="/liquibase/shiyu.xml" />
-    <include file="/liquibase/shiyu_level.xml" />
+    <changeSet id="1" author="Kalaitsidis Arslan">
+        <createTable tableName="shiyu">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+    </changeSet>
 
+    <changeSet id="2" author="Kalaitsidis Arslan" >
+        <createSequence sequenceName="shiyu_sequence" incrementBy="1" startValue="1" dataType="BIGINT"/>
+    </changeSet>
 
 </databaseChangeLog>
