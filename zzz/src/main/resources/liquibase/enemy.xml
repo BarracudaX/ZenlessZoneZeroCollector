@@ -1,0 +1,57 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="1" author="Kalaitsidis Arslan" >
+        <createSequence sequenceName="enemies_sequence" incrementBy="1" startValue="1" dataType="BIGINT"/>
+    </changeSet>
+
+    <changeSet id="2" author="Kalaitsidis Arslan">
+        <createTable tableName="enemies">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(244)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="img" type="VARCHAR(244)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hp" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="3" author="Kalaitsidis Arslan">
+        <createTable tableName="weaknesses">
+            <column name="enemy_id" type="BIGINT">
+                <constraints foreignKeyName="FK_WEAKNESSES_ENEMIES" references="enemies(id)" primaryKey="true" />
+            </column>
+            <column name="attribute" type="VARCHAR(244)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="4" author="Kalaitsidis Arslan">
+        <createTable tableName="resistances">
+            <column name="enemy_id" type="BIGINT">
+                <constraints foreignKeyName="FK_RESISTANCES_ENEMIES" references="enemies(id)" primaryKey="true" />
+            </column>
+            <column name="attribute" type="VARCHAR(244)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
